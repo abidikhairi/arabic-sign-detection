@@ -50,7 +50,7 @@ class TinyConvNet(nn.Module):
 
         return self.linear(x)
 
-    @th.no_grad
+    @th.no_grad()
     def predict(self, image: th.Tensor):
         self.eval()
         x = image.unsqueeze(0)
