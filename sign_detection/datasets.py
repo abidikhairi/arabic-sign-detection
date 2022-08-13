@@ -19,6 +19,11 @@ class SignDataset(Dataset):
     def __len__(self):
         return len(self.frame)
 
+
+    @property
+    def num_classes(self):
+        return self.frame['label'].max() + 1
+
     
     def __getitem__(self, index):
         if th.is_tensor(index):
