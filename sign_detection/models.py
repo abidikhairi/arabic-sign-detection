@@ -1,3 +1,4 @@
+import torch as th
 import torch.nn as nn
 
 
@@ -48,3 +49,10 @@ class TinyConvNet(nn.Module):
         x = x.view(batch_size, -1)
 
         return self.linear(x)
+
+    @th.no_grad
+    def predict(self, image: th.Tensor):
+        self.eval()
+        x = image.unsqueeze(0)
+        x = th.softmax(self(x), dim=1)
+        return x.argmax(dim=1).item()
