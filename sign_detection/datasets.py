@@ -33,7 +33,7 @@ class SignDataset(Dataset):
         image_dir = self.frame.iloc[index, 2]
 
         label = self.frame.iloc[index, 3]
-        image = Image.open(os.path.join(self.image_dir, image_dir, image_file))
+        image = Image.open(os.path.join(self.image_dir, image_dir, image_file)).convert('RGB')
 
         if self.transform is not None:
             image = self.transform(image)
