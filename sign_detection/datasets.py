@@ -29,10 +29,10 @@ class SignDataset(Dataset):
         if th.is_tensor(index):
             index = index.tolist()
 
-        image_file = self.frame.iloc[index, 'File_Name']
-        image_dir = self.frame.iloc[index, 'Class']
+        image_file = self.frame.iloc[index, 1]
+        image_dir = self.frame.iloc[index, 2]
 
-        label = self.frame.iloc[index, 'label']
+        label = self.frame.iloc[index, 3]
         image = Image.open(os.path.join(self.image_dir, image_dir, image_file))
 
         if self.transform is not None:
